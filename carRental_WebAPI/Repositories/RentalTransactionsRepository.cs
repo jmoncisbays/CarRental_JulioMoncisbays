@@ -30,10 +30,10 @@ namespace carRental_WebAPI.Repositories
                 DateReturned = null
             };
             await _context.RentalTransactions.AddAsync(rt);
+            await _context.SaveChangesAsync();
 
             car.IsAvailable = false;
             car.CurrentRentalTransactionId = rt.Id;
-
             await _context.SaveChangesAsync();
         }
 
